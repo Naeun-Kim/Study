@@ -50,7 +50,7 @@ export default function CreateAccount() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setErrot] = useState('');
+  const [error, setError] = useState('');
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {
@@ -78,7 +78,6 @@ export default function CreateAccount() {
         email,
         password
       );
-      console.log(credentials.user);
       await updateProfile(credentials.user, {
         displayName: name,
       });

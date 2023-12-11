@@ -9,6 +9,7 @@ export default function protectedRoute({
   children: React.ReactNode;
 }) {
   const user = auth.currentUser;
+  //if user don't login can not view detail page
   if (user === null) {
     return <Navigate to="/login" />;
   }

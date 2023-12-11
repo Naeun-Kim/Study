@@ -11,6 +11,7 @@ import {
   Wrapper,
 } from '../components/authComponents';
 import { FirebaseError } from 'firebase/app';
+import GithubButton from '../components/githubBtn';
 
 export default function CreateAccount() {
   const navigate = useNavigate();
@@ -38,9 +39,6 @@ export default function CreateAccount() {
     setError('');
     if (isLoading || name === '' || email === '' || password === '') return;
     try {
-      //create an account
-      //set the user name
-      //redirect to the home
       setLoading(true);
       const credentials = await createUserWithEmailAndPassword(
         auth,
@@ -97,6 +95,7 @@ export default function CreateAccount() {
       <Switcher>
         Already have an account? <Link to="/login">Log in &rarr;</Link>
       </Switcher>
+      <GithubButton />
     </Wrapper>
   );
 }

@@ -15,6 +15,7 @@ import {
   TextButton,
 } from '../components/authComponents';
 import { FirebaseError } from 'firebase/app';
+import GithubButton from '../components/githubBtn';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -93,6 +94,7 @@ export default function Login() {
           Send reset password link to email &rarr;
         </TextButton>
       </Switcher>
+      <GithubButton />
     </Wrapper>
   );
 }

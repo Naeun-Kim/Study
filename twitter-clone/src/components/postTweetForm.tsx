@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { styled } from 'styled-components';
-import { auth, db } from '../firebase';
-import { addDoc, collection } from 'firebase/firestore';
+import { auth, db, storage } from '../firebase';
+import { addDoc, collection, updateDoc } from 'firebase/firestore';
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 
 const Form = styled.form`
   display: flex;
@@ -56,12 +57,19 @@ const SubmitBtn = styled.input`
   &:active {
     opacity: 0.9;
   }
+  &:disabled {
+    opacity: 0.3;
+  }
 `;
 
 export default function PostTweetForm() {
   const [isLoading, setLoading] = useState(false);
   const [tweet, setTweet] = useState('');
   const [file, setFile] = useState<File | null>(null);
+  const [disable, setDisable] = useState(false);
+
+  const maxFileSizeInMB = 1;
+  const maxFileSizeInKB = 1024 * 1024 * maxFileSizeInMB;
 
   const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setTweet(e.target.value);
@@ -69,8 +77,16 @@ export default function PostTweetForm() {
 
   const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = e.target;
-    if (files && files.length === 1) {
+    //max file size is 1MB
+    if (files && files.length === 1 && files[0].size < maxFileSizeInKB) {
       setFile(files[0]);
+    }
+    if (files && files[0].size > maxFileSizeInKB) {
+      alert(`Please select a file that is ${maxFileSizeInMB}MB or less.`);
+      setDisable(true);
+    } else {
+      alert('File uploaded successfully!');
+      setDisable(false);
     }
   };
 
@@ -80,12 +96,26 @@ export default function PostTweetForm() {
     if (!user || isLoading || tweet === '' || tweet.length > 180) return;
     try {
       setLoading(true);
-      await addDoc(collection(db, 'tweets'), {
+      const doc = await addDoc(collection(db, 'tweets'), {
         tweet,
         createdAt: Date.now(),
         username: user.displayName || 'Anonymous',
         userId: user.uid,
       });
+      //attach file
+      if (file) {
+        const locationRef = ref(
+          storage,
+          `tweets/${user.uid}-${user.displayName}/${doc.id}`
+        );
+        const result = await uploadBytes(locationRef, file);
+        const url = await getDownloadURL(result.ref);
+        await updateDoc(doc, {
+          photo: url,
+        });
+      }
+      setTweet('');
+      setFile(null);
     } catch (e) {
       console.log(e);
     } finally {
@@ -100,6 +130,7 @@ export default function PostTweetForm() {
         onChange={onChange}
         value={tweet}
         placeholder="What is happening?"
+        required
       />
       <AttachFileButton htmlFor="file">
         {file ? 'Photo added ✅' : 'Add photo'}
@@ -113,6 +144,7 @@ export default function PostTweetForm() {
       <SubmitBtn
         type="submit"
         value={isLoading ? 'Posting...' : 'Post Tweet'}
+        disabled={disable}
       />
     </Form>
   );

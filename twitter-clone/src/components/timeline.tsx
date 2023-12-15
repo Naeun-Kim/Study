@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { styled } from 'styled-components';
-import Tweet from './tweets';
+import Tweet from './tweet';
 import {
   collection,
   limit,
@@ -20,7 +20,19 @@ export interface ITweet {
   photo?: string;
 }
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  max-height: calc(100vh - 300px);
+  overflow-y: auto;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 10px;
+  }
+`;
 
 export default function Timeline() {
   const [tweets, setTweet] = useState<ITweet[]>([]);

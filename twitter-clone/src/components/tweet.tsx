@@ -243,20 +243,22 @@ export default function Tweet({ username, photo, tweet, userId, id }: ITweet) {
       {photo ? (
         <ColumnFile>
           <Photo src={photo} />
-          <EditFileArea>
-            <EditFile>
-              <label htmlFor="tweetFile">edit</label>
-              <input
-                type="file"
-                id="tweetFile"
-                accept="image/*"
-                onChange={onEditFile}
-              />
-            </EditFile>
-            <DeleteFile onClick={onDeleteFile}>
-              <span>delete</span>
-            </DeleteFile>
-          </EditFileArea>
+          {user?.uid === userId && (
+            <EditFileArea>
+              <EditFile>
+                <label htmlFor="tweetFile">edit</label>
+                <input
+                  type="file"
+                  id="tweetFile"
+                  accept="image/*"
+                  onChange={onEditFile}
+                />
+              </EditFile>
+              <DeleteFile onClick={onDeleteFile}>
+                <span>delete</span>
+              </DeleteFile>
+            </EditFileArea>
+          )}
         </ColumnFile>
       ) : null}
     </Wrapper>

@@ -36,8 +36,9 @@ const ColumnFile = styled.div`
 `;
 
 const Photo = styled.img`
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   border-radius: 10px;
 `;
 

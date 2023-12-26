@@ -1,5 +1,19 @@
 https://twitter-clone-9658e.web.app/
 
+Nomad Coder lecture
+
+The code I've worked on includes:
+
+Editing/Deleting attached images
+File upload size limitation
+Editing the profile name, with changes taking effect upon outside click.
+
+내가 작업한 코드
+- 첨부된 사진 편집/삭제
+- 파일 업로드 용량 제한
+- 프로필 이름 편집. 외부 클릭시 적용되도록.
+
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

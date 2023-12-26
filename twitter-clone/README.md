@@ -3,10 +3,9 @@ https://twitter-clone-9658e.web.app/
 Nomad Coder lecture
 
 The code I've worked on includes:
-
-Editing/Deleting attached images
-File upload size limitation
-Editing the profile name, with changes taking effect upon outside click.
+- Editing/Deleting attached images
+- File upload size limitation
+- Editing the profile name, with changes taking effect upon outside click.
 
 내가 작업한 코드
 - 첨부된 사진 편집/삭제

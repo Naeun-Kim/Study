@@ -20,18 +20,19 @@ export default function Home() {
           style={{
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'space-between',
+            // justifyContent: 'space-between',
             minHeight: 'calc(100vh - 50px)',
           }}
         >
           <section>cotents</section>
           <div
             style={{
-              position: 'sticky',
-              bottom: 0,
-              left: 0,
-              right: 0,
-              padding: '0 20px 20px 20px',
+              marginTop: 'auto',
+              // position: 'sticky',
+              // bottom: 0,
+              // left: 0,
+              // right: 0,
+              // padding: '0 20px 20px 20px',
               // padding: `0 20px calc(20px + env(safe-area-inset-bottom))`,
             }}
           >

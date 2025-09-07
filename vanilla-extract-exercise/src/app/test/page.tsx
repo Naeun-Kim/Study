@@ -28,7 +28,10 @@ export default function Home() {
           <div
             style={{
               position: 'sticky',
-              bottom: '20px',
+              bottom: 0,
+              left: 0,
+              right: 0,
+              padding: '0 20px 20px 20px',
               // padding: `0 20px calc(20px + env(safe-area-inset-bottom))`,
             }}
           >

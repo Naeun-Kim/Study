@@ -27,11 +27,9 @@ export default function Home() {
           <section>cotents</section>
           <div
             style={{
-              position: 'fixed',
-              bottom: '0',
-              left: '0',
-              right: '0',
-              padding: `0 20px calc(20px + env(safe-area-inset-bottom))`,
+              position: 'sticky',
+              bottom: '20px',
+              // padding: `0 20px calc(20px + env(safe-area-inset-bottom))`,
             }}
           >
             <Button style={{ width: '100%' }}>CTA</Button>

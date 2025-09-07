@@ -4,21 +4,30 @@ import { Button } from '@/components/Button/Button';
 
 export default function Home() {
   return (
-    <main style={{}}>
-      <header style={{ height: '50px', backgroundColor: '#eee' }}>
-        header
-      </header>
-      <div
+    <main style={{ position: 'relative' }}>
+      <header
         style={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          minHeight: 'calc(100vh - 50px)',
+          position: 'fixed',
+          width: '100%',
+          height: '50px',
+          backgroundColor: '#eee',
         }}
       >
-        <section>cotents</section>
-        <Button>CTA</Button>
-      </div>
+        header
+      </header>
+      <section style={{ paddingTop: '50px' }}>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            minHeight: 'calc(100vh - 50px)',
+          }}
+        >
+          <section>cotents</section>
+          <Button style={{ position: 'sticky', bottom: '20px' }}>CTA</Button>
+        </div>
+      </section>
     </main>
   );
 }

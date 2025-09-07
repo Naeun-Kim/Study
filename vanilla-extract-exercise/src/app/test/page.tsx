@@ -21,13 +21,14 @@ export default function Home() {
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
-            minHeight: 'calc(100svh - 50px)',
+            // minHeight: 'calc(100svh - 50px)',
+            minHeight: 'calc(100vh - 50px)',
           }}
         >
           <section>cotents</section>
           <div
             style={{
-              position: 'sticky',
+              position: 'fixed',
               bottom: 0,
               left: 0,
               right: 0,

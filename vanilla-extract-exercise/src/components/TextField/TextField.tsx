@@ -36,7 +36,8 @@ export function TextField({
   name,
   autoComplete,
 }: Props) {
-  const inputId = id ?? useId();
+  const generatedId = useId();
+  const inputId = id ?? generatedId;
   const [focused, setFocused] = useState(false);
   const state: 'default' | 'focused' | 'error' | 'disabled' = disabled
     ? 'disabled'

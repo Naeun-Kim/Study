@@ -25,7 +25,15 @@ export default function Home() {
           }}
         >
           <section>cotents</section>
-          <Button style={{ position: 'sticky', bottom: '20px' }}>CTA</Button>
+          <Button
+            style={{
+              position: 'sticky',
+              bottom: '20px',
+              paddingBottom: 'env(safe-area-inset-bottom)',
+            }}
+          >
+            CTA
+          </Button>
         </div>
       </section>
     </main>
